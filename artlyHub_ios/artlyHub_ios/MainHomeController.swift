@@ -9,20 +9,6 @@
 import UIKit
 
 class MainHomeController: UITabBarController {
-    
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        
-        let index = viewControllers?.index(of: viewController)
-        if index == 2 {
-            let layout = UICollectionViewFlowLayout()
-            let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
-            let navController = UINavigationController(rootViewController: photoSelectorController)
-            present(navController, animated: true, completion: nil)
-            return false
-        }
-        return true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,9 +25,7 @@ class MainHomeController: UITabBarController {
         let searchNavController = SearchController()
         searchNavController.tabBarItem.image = #imageLiteral(resourceName: "ic_search")
         
-        let photoSelectController = PhotoSelectorController(collectionViewLayout: layout)
-        let photoSelectNavController = UINavigationController(rootViewController: photoSelectController)
-        photoSelectNavController.tabBarItem.image = #imageLiteral(resourceName: "ic_create")
+        let photoSelectNavController = templateNavController(selectedImage: #imageLiteral(resourceName: "ic_create"), rootViewController: PhotoSelectorController(collectionViewLayout: layout))
         
         let messageController = MessageController()
         let messageNavController = UINavigationController(rootViewController: messageController)
@@ -57,11 +41,10 @@ class MainHomeController: UITabBarController {
         }
     }
     
-    fileprivate func templateNavController(unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
+    fileprivate func templateNavController(selectedImage: UIImage, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
         let viewController = rootViewController
         let navController = UINavigationController(rootViewController: viewController)
-        navController.tabBarItem.image = unselectedImage
-        navController.tabBarItem.selectedImage = selectedImage
+        navController.tabBarItem.image = selectedImage
         return navController
     }
 }
