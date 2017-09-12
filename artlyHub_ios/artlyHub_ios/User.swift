@@ -11,17 +11,13 @@ import UIKit
 class User: NSObject {
     var id: Int?
     var userName: String?
-    var first_name: String?
-    var last_name: String?
     var email: String?
     var profile: Profile?
 }
 
 class Profile: NSObject {
-    var sex: Int?
+    var name: String?
     var phone: String?
     var address: String?
     var status_msg: String?
-    //var follow
-    //var profile_pic
 }

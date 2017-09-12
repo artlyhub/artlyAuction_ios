@@ -18,10 +18,10 @@ class CommunityController: UICollectionViewController {
         logoImage.frame = CGRect(x: 0, y: 0, width: 38, height: 38)
         logoImage.contentMode = .scaleAspectFit
         self.navigationItem.titleView = logoImage
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_create"), style: .plain, target: self, action: #selector(handleCreate))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.black
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_message"), style: .plain, target: self, action: #selector(handleMessage))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.black
+        //navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_create"), style: .plain, target: self, action: #selector(handleCreate))
+        //navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_message"), style: .plain, target: self, action: #selector(handleMessage))
+        //navigationItem.rightBarButtonItem?.tintColor = UIColor.black
     }
     
     func handleMessage() {

@@ -17,13 +17,9 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = .white
-        
         setupNavigationButtons()
-        
         collectionView?.register(PhotoSelectorCell.self, forCellWithReuseIdentifier: cellId)
-        
         collectionView?.register(PhotoSelectorHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
-        
         fetchPhotos()
     }
     
@@ -145,7 +141,6 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     fileprivate func setupNavigationButtons() {
         navigationController?.navigationBar.tintColor = .black
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNext))
     }
     

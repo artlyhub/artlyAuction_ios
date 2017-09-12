@@ -23,8 +23,8 @@ class EditProfileController: UIViewController {
     }()
     
     func modifyBtnPressed(sender : UIButton) {
-        let parameters = ["sex": sexTextField.text, "profile_pic": nil, "phone": phoneTextField.text, "address": addressTextField.text, "status_msg": statusMsgTextField.text, "follow": ""]
-        guard let url = URL(string: "https://www.artlyhub.com/api/user-profile/whateveruwant/") else { return }
+        let parameters = ["name": nameTextField.text, "phone": phoneTextField.text, "address": addressTextField.text, "status_msg": statusMsgTextField.text]
+        guard let url = URL(string: "https://www.artlyhub.com/api/profile/whateveruwant/") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
@@ -50,17 +50,9 @@ class EditProfileController: UIViewController {
             }.resume()
     }
 
-    let sexTextField: UITextField = {
+    let nameTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "sex"
-        tf.tintColor = .black
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        return tf
-    }()
-    
-    let profilePicTextField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "profilePic"
+        tf.placeholder = "name"
         tf.tintColor = .black
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -90,28 +82,20 @@ class EditProfileController: UIViewController {
         return tf
     }()
     
-    let followTextField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "follow"
-        tf.tintColor = .black
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        return tf
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBackSpace))
         navigationItem.leftBarButtonItem?.tintColor = UIColor.black
         view.addSubview(modifyButton)
-        view.addSubview(sexTextField)
+        view.addSubview(nameTextField)
         view.addSubview(phoneTextField)
         view.addSubview(addressTextField)
         view.addSubview(statusMsgTextField)
         modifyButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
-        sexTextField.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 55, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
-        phoneTextField.anchor(top: sexTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        nameTextField.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 55, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        phoneTextField.anchor(top: nameTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         addressTextField.anchor(top: phoneTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         statusMsgTextField.anchor(top: addressTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
     }
