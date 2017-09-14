@@ -112,10 +112,10 @@
 		7E93CB1F1F67F09300B0014F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7E93CB241F67F10300B0014F /* Tabs */,
+				7E93CB201F67F0B900B0014F /* MainHomeController.swift */,
 				7E8C356C1F67EC19009F66C3 /* LoginController.swift */,
 				7E93CB221F67F0DC00B0014F /* SignUpController.swift */,
-				7E93CB201F67F0B900B0014F /* MainHomeController.swift */,
-				7E93CB241F67F10300B0014F /* Tabs */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
