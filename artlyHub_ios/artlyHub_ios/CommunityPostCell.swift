@@ -18,13 +18,11 @@ class CommunityPostCell: UICollectionViewCell {
     
     lazy var photoImageView: UIImageView = {
         let iv = UIImageView(image: #imageLiteral(resourceName: "test_a.png"))
-        iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector(("photoBtnPressed:"))))
-        //iv.isUserInteractionEnabled = true
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
     
-    func photoBtnPressed(sender: UITapGestureRecognizer) {
+    func photoBtnPressed(tapGestureRecognizer: UITapGestureRecognizer) {
         delegate?.didImagePressed()
     }
     
@@ -85,6 +83,11 @@ class CommunityPostCell: UICollectionViewCell {
         addSubview(descLabelView)
         addSubview(priceLabelView)
         addSubview(likeLabelView)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(photoBtnPressed(tapGestureRecognizer:)))
+        photoImageView.isUserInteractionEnabled = true
+        photoImageView.addGestureRecognizer(tapGestureRecognizer)
+        
         
         photoImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 350)
         titleLabelView.anchor(top: photoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: centerXAnchor, paddingTop: 3, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 15)

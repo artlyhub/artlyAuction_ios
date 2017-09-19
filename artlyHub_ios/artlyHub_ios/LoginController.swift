@@ -129,7 +129,7 @@ class LoginController: UIViewController, UIImagePickerControllerDelegate, UINavi
         return tf
     }()
     
-    let profileImageView: UIImageView = {
+    var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "artlyLogo")
         imageView.contentMode = .scaleAspectFill
