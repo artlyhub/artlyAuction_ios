@@ -22,7 +22,7 @@ class EditProfileController: UIViewController {
         return button
     }()
     
-    func modifyBtnPressed(sender : UIButton) {
+    @objc func modifyBtnPressed(sender : UIButton) {
         let parameters = ["name": nameTextField.text, "phone": phoneTextField.text, "address": addressTextField.text, "status_msg": statusMsgTextField.text]
         guard let url = URL(string: "https://www.artlyhub.com/api/profile/whateveruwant/") else { return }
         
@@ -100,7 +100,7 @@ class EditProfileController: UIViewController {
         statusMsgTextField.anchor(top: addressTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
     }
     
-    func handleBackSpace(){
+    @objc func handleBackSpace(){
         dismiss(animated: true, completion: nil) //이전의 화면으로 돌아가기
     }
 

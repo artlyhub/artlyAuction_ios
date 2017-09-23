@@ -31,7 +31,7 @@ class MessageController:  UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func handleSend() {
+    @objc func handleSend() {
         let navController = UINavigationController(rootViewController: MessageSendController())
         present(navController, animated: true, completion: nil)
     }

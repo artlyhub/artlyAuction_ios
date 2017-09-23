@@ -23,7 +23,7 @@ class SignUpController: UIViewController {
         return button
     }()
     
-    func registerBtnPressed(sender : UIButton) {
+    @objc func registerBtnPressed(sender : UIButton) {
         let parameters = ["username": userNameTextField.text, "password": passwordTextField.text, "email": emailTextField.text]
         guard let url = URL(string: "https://www.artlyhub.com/api/user/") else { return }
         
@@ -49,7 +49,7 @@ class SignUpController: UIViewController {
                     print(error)
                 }
             }
-            }.resume()
+        }.resume()
     }
     
     let userNameTextField: UITextField = {
@@ -106,7 +106,7 @@ class SignUpController: UIViewController {
         setupButton()
     }
     
-    func handleBackSpace() {
+    @objc func handleBackSpace() {
         dismiss(animated: true, completion: nil) //이전의 화면으로 돌아가기
     }
     

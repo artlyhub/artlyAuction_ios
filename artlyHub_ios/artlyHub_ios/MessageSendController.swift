@@ -19,7 +19,7 @@ class MessageSendController: UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = .black
     }
     
-    func handleBack() {
+    @objc func handleBack() {
         dismiss(animated: true, completion: nil)
     }
 }

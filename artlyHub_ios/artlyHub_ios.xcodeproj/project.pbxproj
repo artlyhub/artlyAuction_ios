@@ -13,6 +13,10 @@
 		7E3277CD1F6ABFB200FCC29C /* test_c.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E3277C81F6ABFB200FCC29C /* test_c.png */; };
 		7E3277CE1F6ABFB200FCC29C /* test_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E3277C91F6ABFB200FCC29C /* test_d.png */; };
 		7E3277CF1F6ABFB200FCC29C /* test_e.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E3277CA1F6ABFB200FCC29C /* test_e.png */; };
+		7E71C7051F76D4E50061FA39 /* PrevUploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71C7041F76D4E50061FA39 /* PrevUploadController.swift */; };
+		7E71C7071F76D7A10061FA39 /* UploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71C7061F76D7A10061FA39 /* UploadController.swift */; };
+		7E7CF2AA1F76A0AA003839C0 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7CF2A91F76A0AA003839C0 /* SearchCell.swift */; };
+		7E7CF2AC1F76AE4B003839C0 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7CF2AB1F76AE4B003839C0 /* UserProfileCell.swift */; };
 		7E8C356B1F67EC19009F66C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C356A1F67EC19009F66C3 /* AppDelegate.swift */; };
 		7E8C356D1F67EC19009F66C3 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C356C1F67EC19009F66C3 /* LoginController.swift */; };
 		7E8C35701F67EC19009F66C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8C356E1F67EC19009F66C3 /* Main.storyboard */; };
@@ -41,6 +45,10 @@
 		7E3277C81F6ABFB200FCC29C /* test_c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_c.png; sourceTree = "<group>"; };
 		7E3277C91F6ABFB200FCC29C /* test_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_d.png; sourceTree = "<group>"; };
 		7E3277CA1F6ABFB200FCC29C /* test_e.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_e.png; sourceTree = "<group>"; };
+		7E71C7041F76D4E50061FA39 /* PrevUploadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevUploadController.swift; sourceTree = "<group>"; };
+		7E71C7061F76D7A10061FA39 /* UploadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadController.swift; sourceTree = "<group>"; };
+		7E7CF2A91F76A0AA003839C0 /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		7E7CF2AB1F76AE4B003839C0 /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		7E8C35671F67EC19009F66C3 /* artlyHub_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = artlyHub_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E8C356A1F67EC19009F66C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = artlyHub_ios/AppDelegate.swift; sourceTree = "<group>"; };
 		7E8C356C1F67EC19009F66C3 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -173,6 +181,7 @@
 				7E93CB311F67F38600B0014F /* UserProfileController.swift */,
 				7E93CB321F67F38600B0014F /* User.swift */,
 				7E93CB331F67F38600B0014F /* EditProfileController.swift */,
+				7E7CF2AB1F76AE4B003839C0 /* UserProfileCell.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -181,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				7E93CB381F67F38B00B0014F /* SearchController.swift */,
+				7E7CF2A91F76A0AA003839C0 /* SearchCell.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -200,6 +210,8 @@
 				7E93CB2A1F67F37200B0014F /* PhotoSelectorController.swift */,
 				7E93CB2B1F67F37200B0014F /* PhotoSelectorCell.swift */,
 				7E93CB2C1F67F37200B0014F /* PhotoSelectorHeader.swift */,
+				7E71C7041F76D4E50061FA39 /* PrevUploadController.swift */,
+				7E71C7061F76D7A10061FA39 /* UploadController.swift */,
 			);
 			name = Upload;
 			sourceTree = "<group>";
@@ -231,11 +243,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Yumin Park";
 				TargetAttributes = {
 					7E8C35661F67EC19009F66C3 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -283,7 +296,9 @@
 			files = (
 				7E93CB2F1F67F37200B0014F /* PhotoSelectorHeader.swift in Sources */,
 				7E93CB231F67F0DC00B0014F /* SignUpController.swift in Sources */,
+				7E71C7071F76D7A10061FA39 /* UploadController.swift in Sources */,
 				7E8C356D1F67EC19009F66C3 /* LoginController.swift in Sources */,
+				7E7CF2AC1F76AE4B003839C0 /* UserProfileCell.swift in Sources */,
 				7E93CB391F67F38B00B0014F /* SearchController.swift in Sources */,
 				7E93CB341F67F38600B0014F /* UserProfileHeader.swift in Sources */,
 				7E93CB211F67F0B900B0014F /* MainHomeController.swift in Sources */,
@@ -291,9 +306,11 @@
 				7E93CB2E1F67F37200B0014F /* PhotoSelectorCell.swift in Sources */,
 				7E93CB2D1F67F37200B0014F /* PhotoSelectorController.swift in Sources */,
 				7E93CB3D1F67F39000B0014F /* MessageSendController.swift in Sources */,
+				7E71C7051F76D4E50061FA39 /* PrevUploadController.swift in Sources */,
 				7E2EAEBF1F6E631000D740DC /* CommunityPostCell.swift in Sources */,
 				7E93CB3C1F67F39000B0014F /* MessageController.swift in Sources */,
 				7E93CB1D1F67EDD800B0014F /* Util.swift in Sources */,
+				7E7CF2AA1F76A0AA003839C0 /* SearchCell.swift in Sources */,
 				7E93CB351F67F38600B0014F /* UserProfileController.swift in Sources */,
 				7E93CB3F1F67F39900B0014F /* CommunityController.swift in Sources */,
 				7E8C356B1F67EC19009F66C3 /* AppDelegate.swift in Sources */,
@@ -335,7 +352,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -343,7 +362,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -386,7 +409,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -394,7 +419,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -429,7 +458,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.whateveruwant.artlyHub-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -442,7 +472,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.whateveruwant.artlyHub-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

@@ -22,14 +22,14 @@ class CommunityPostCell: UICollectionViewCell {
         return iv
     }()
     
-    func photoBtnPressed(tapGestureRecognizer: UITapGestureRecognizer) {
+    @objc func photoBtnPressed(tapGestureRecognizer: UITapGestureRecognizer) {
         delegate?.didImagePressed()
     }
     
     let priceLabelView: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "300000\n", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSAttributedString(string: "price", attributes: [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        let attributedText = NSMutableAttributedString(string: "300000\n", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
+        attributedText.append(NSAttributedString(string: "price", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         label.attributedText = attributedText
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -38,8 +38,8 @@ class CommunityPostCell: UICollectionViewCell {
     
     let likeLabelView: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "300\n", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSAttributedString(string: "likes", attributes: [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        let attributedText = NSMutableAttributedString(string: "300\n", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
+        attributedText.append(NSAttributedString(string: "likes", attributes:[NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         label.attributedText = attributedText
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -48,8 +48,8 @@ class CommunityPostCell: UICollectionViewCell {
     
     let titleLabelView: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "title : ", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSAttributedString(string: "Home", attributes: [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        let attributedText = NSMutableAttributedString(string: "title : ", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSAttributedString(string: "Home", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         label.attributedText = attributedText
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -58,8 +58,8 @@ class CommunityPostCell: UICollectionViewCell {
     
     let createrLabelView: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "creater : ", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSAttributedString(string: "P.Y.M", attributes: [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        let attributedText = NSMutableAttributedString(string: "creater : ", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSAttributedString(string: "P.Y.M", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         label.attributedText = attributedText
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -68,7 +68,7 @@ class CommunityPostCell: UICollectionViewCell {
     
     let descLabelView: UILabel = {
         let lb = UILabel()
-        lb.textColor = .black
+        lb.textColor = .lightGray
         lb.text = "Smells like money"
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
@@ -95,8 +95,6 @@ class CommunityPostCell: UICollectionViewCell {
         descLabelView.anchor(top: titleLabelView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 3, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 15)
         priceLabelView.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: centerXAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         likeLabelView.anchor(top: nil, left: centerXAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
-        
     }
 
     required init?(coder aDecoder: NSCoder) {

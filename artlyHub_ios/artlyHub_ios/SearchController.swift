@@ -8,30 +8,80 @@
 
 import UIKit
 
-class SearchController: UIViewController {
-
-    let searchTextField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Search"
-        tf.tintColor = .black
-        tf.backgroundColor = UIColor(r: 240, g: 240, b: 240)
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        return tf
+class SearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    lazy var searchBar: UISearchBar = {
+        let sb = UISearchBar()
+        sb.placeholder = "Enter username"
+        sb.barTintColor = .gray
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor(r: 230, g: 230, b: 230)
+        return sb
     }()
     
-    let searchButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "ic_search"), for: .normal)
-        button.tintColor = .black
-        return button
-    }()
+    var userNames : Array<String> = Array<String>()
+    
+    let cellId = "cellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(searchTextField)
-        view.addSubview(searchButton)
-        searchTextField.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 30)
-        searchButton.anchor(top: searchTextField.topAnchor, left: nil, bottom: searchTextField.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
+        collectionView?.backgroundColor = .white
+        
+        navigationController?.navigationBar.addSubview(searchBar)
+        let navBar = navigationController?.navigationBar
+        searchBar.anchor(top: navBar?.topAnchor, left: navBar?.leftAnchor, bottom: navBar?.bottomAnchor, right: navBar?.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
+        
+        
+        collectionView?.register(SearchCell.self, forCellWithReuseIdentifier: cellId)
+        
+        fetchUsers()
+        self.collectionView?.reloadData()
+        print(userNames)
+    }
+    
+    
+    fileprivate func fetchUsers() {
+        print("Fetching...")
+        userNames.removeAll()
+        guard let url = URL(string: "https://www.artlyhub.com/api/user/") else { return }
+        //같은 name있는지 확인
+        let session = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let response = response {
+                print(response)
+            }
+            if let data = data {
+                print(data)
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                    if let json = json as? [String: Any] {
+                        //print(json)
+                        if let results = json["results"] as? [[String: Any]] {
+                            for result in results {
+                                //print(result)
+                                if let name = result["username"] as? String {
+                                    //print(name)
+                                    self.userNames.append(name)
+                                }
+                            }
+                        }
+                    }
+                } catch let jsonError {
+                    print(jsonError)
+                }
+            }
+        }
+        session.resume()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 16
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 66)
     }
 }

@@ -144,11 +144,11 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNext))
     }
     
-    func handleNext() {
+    @objc func handleNext() {
         print("Handling next")
     }
     
-    func handleCancel() {
-        dismiss(animated: true, completion: nil)
+    @objc func handleCancel() {
+        dismiss(animated: false, completion: nil)
     }
 }

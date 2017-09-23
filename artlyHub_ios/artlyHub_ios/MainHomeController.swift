@@ -9,17 +9,24 @@
 import UIKit
 
 class MainHomeController: UITabBarController, UITabBarControllerDelegate {
+    /*
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         let index = viewControllers?.index(of: viewController)
         if index == 2 {
+            /*
             let layout = UICollectionViewFlowLayout()
             let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
+            let navController = UINavigationController(rootViewController: photoSelectorController)
+             */
+            
+            let photoSelectorController = PrevUploadController()
             let navController = UINavigationController(rootViewController: photoSelectorController)
             present(navController, animated: true, completion: nil)
             return false
         }
         return true
     }
+     */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,17 +41,20 @@ class MainHomeController: UITabBarController, UITabBarControllerDelegate {
         let communityNavController = UINavigationController(rootViewController: communityController)
         communityNavController.tabBarItem.image = #imageLiteral(resourceName: "ic_home")
         
-        let searchNavController = SearchController()
+        let searchController = SearchController(collectionViewLayout: layout)
+        let searchNavController = UINavigationController(rootViewController: searchController)
         searchNavController.tabBarItem.image = #imageLiteral(resourceName: "ic_search")
         
-        let photoSelectNavController = templateNavController(selectedImage: #imageLiteral(resourceName: "ic_create"))
+        let uploadController = PrevUploadController()
+        let uploadNavController = UINavigationController(rootViewController: uploadController)
+        uploadNavController.tabBarItem.image = #imageLiteral(resourceName: "ic_create")
         
         let messageController = MessageController()
         let messageNavController = UINavigationController(rootViewController: messageController)
         messageNavController.tabBarItem.image = #imageLiteral(resourceName: "ic_message")
         
         tabBar.tintColor = .black
-        viewControllers = [communityNavController, searchNavController, photoSelectNavController, messageNavController, userProfileNavController]
+        viewControllers = [communityNavController, searchNavController, uploadNavController, messageNavController, userProfileNavController]
         guard let items = tabBar.items else { return }
         for item in items {
             item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
