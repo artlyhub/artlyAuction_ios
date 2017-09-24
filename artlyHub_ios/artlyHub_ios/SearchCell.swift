@@ -10,6 +10,12 @@ import UIKit
 
 class SearchCell: UICollectionViewCell {
     
+    var user: String? {
+        didSet {
+            nameLabel.text = user
+        }
+    }
+    
     let previewImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "test_a")

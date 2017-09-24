@@ -8,16 +8,30 @@
 
 import UIKit
 
-class SearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class SearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     lazy var searchBar: UISearchBar = {
         let sb = UISearchBar()
         sb.placeholder = "Enter username"
         sb.barTintColor = .gray
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor(r: 230, g: 230, b: 230)
+        sb.delegate = self
         return sb
     }()
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //print(searchText)
+        if searchText.isEmpty {
+            self.userFilteredNames = self.userNames
+        } else {
+            userFilteredNames = self.userNames.filter { (userNames) -> Bool in
+                return userNames.lowercased().contains(searchText.lowercased())
+            }
+        }
+        self.collectionView?.reloadData()
+    }
+    
+    var userFilteredNames : Array<String> = Array<String>()
     var userNames : Array<String> = Array<String>()
     
     let cellId = "cellId"
@@ -32,9 +46,7 @@ class SearchController: UICollectionViewController, UICollectionViewDelegateFlow
         
         
         collectionView?.register(SearchCell.self, forCellWithReuseIdentifier: cellId)
-        
         fetchUsers()
-        self.collectionView?.reloadData()
         print(userNames)
     }
     
@@ -68,16 +80,19 @@ class SearchController: UICollectionViewController, UICollectionViewDelegateFlow
                     print(jsonError)
                 }
             }
+            self.userFilteredNames = self.userNames
+            self.collectionView?.reloadData()
         }
         session.resume()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 16
+        return userFilteredNames.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchCell
+        cell.user = userFilteredNames[indexPath.item]
         return cell
     }
     
