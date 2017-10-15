@@ -44,9 +44,9 @@ class SearchController: UICollectionViewController, UICollectionViewDelegateFlow
         let navBar = navigationController?.navigationBar
         searchBar.anchor(top: navBar?.topAnchor, left: navBar?.leftAnchor, bottom: navBar?.bottomAnchor, right: navBar?.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
         
-        
-        collectionView?.register(SearchCell.self, forCellWithReuseIdentifier: cellId)
         fetchUsers()
+        collectionView?.register(SearchCell.self, forCellWithReuseIdentifier: cellId)
+        
         print(userNames)
     }
     

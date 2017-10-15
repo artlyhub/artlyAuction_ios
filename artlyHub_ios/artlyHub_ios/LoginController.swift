@@ -210,6 +210,5 @@ class LoginController: UIViewController, UINavigationControllerDelegate {
                 }
             }
             }.resume()
-        
     }
 }
